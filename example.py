@@ -38,10 +38,12 @@ def send_command(command, wait_response=True):
 try:
     # Создаём UDP-сокет
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-    # Пример использования:
+    # Пример использования через функцию:
     send_command("P_ON")  # Включение лампы
     send_command("EFF 42")  # Установка эффекта 42
+
+    # Пример использования напрямую:
+    # sock.sendto(b'EFF 5', ("192.168.1.143", 8888))
 
 finally:
     # Закрываем сокет
