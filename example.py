@@ -1,8 +1,8 @@
 import socket
 import time
 
-LAMP_IP = "192.168.1.143" # IP лампы в локальной сети
-LAMP_PORT = 8888 # Стандартный порт для управления лампой
+LAMP_IP = "192.168.1.143"  # IP лампы в локальной сети
+LAMP_PORT = 8888  # Стандартный порт для управления лампой
 
 
 def send_command(command, wait_response=True):
@@ -41,9 +41,19 @@ try:
     # Пример использования через функцию:
     send_command("P_ON")  # Включение лампы
     send_command("EFF 42")  # Установка эффекта 42
+    send_command("BTN OFF")  # Выключение кнопки
 
     # Пример использования напрямую:
     # sock.sendto(b'EFF 5', ("192.168.1.143", 8888))
+
+    # Примеры рисования точек
+    send_command("DRAWON")  # Включение режима рисования
+    send_command("CLR")  # Очистка экрана
+
+    send_command("COL;0;255;0")  # Синий (R;B;G)
+    send_command("DRW;8;8")  # Рисование точки по координатам
+    send_command("COL;0;0;255")  # Зелёный (R;B;G)
+    send_command("DRW;8;10")  # Рисование точки по координатам
 
 finally:
     # Закрываем сокет
